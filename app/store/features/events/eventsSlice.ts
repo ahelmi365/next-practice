@@ -14,7 +14,7 @@ const eventsSlice = createSlice({
   initialState,
   reducers: {
     addEvent(state, action: PayloadAction<IEvent>) {
-      state.events.push(action.payload); // ✅ Now `state.events` is an array
+      state.events.push(action.payload);
     },
     updateEvent(state, action: PayloadAction<IEvent>) {
       const { id } = action.payload;
