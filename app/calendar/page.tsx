@@ -26,7 +26,7 @@ import {
   addEvent,
   removeEvent,
   updateEvent,
-} from "../store/events/eventsSlice";
+} from "../store/features/events/eventsSlice";
 
 const CalendarPage = () => {
   const events = useAppSelector((state) => state.events.events);
