@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Login from "../login/Login";
 
 const NavBar = () => {
   return (
@@ -20,6 +21,9 @@ const NavBar = () => {
 
         <li>
           <Link href={"/posts"}>Posts</Link>
+        </li>
+        <li>
+          <Login />
         </li>
       </ul>
     </nav>
