@@ -13,24 +13,47 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./features/authSlice/authSlice";
 import eventsReducer from "./features/events/eventsSlice";
+import sessionStorage from "redux-persist/lib/storage/session"; // ✅ Session storage
 
 // Persist config
-const persistConfig = {
+const localPersistConfig = {
   key: "persist-root",
   storage,
-  whitelist: ["auth", "events"], // ✅ Make sure events are included in persistence
+  whitelist: ["auth"], // ✅ Make sure events are included in persistence
 };
 
+// ✅ Persist config for sessionStorage
+const sessionPersistConfig = {
+  key: "session-root",
+  storage: sessionStorage,
+  whitelist: ["events"], // ✅ Store 'settings' in session storage
+};
+
+const persistedLocalReducer = persistReducer(
+  localPersistConfig,
+  combineReducers({
+    auth: authReducer,
+  })
+);
+
+const persistedSessionReducer = persistReducer(
+  sessionPersistConfig,
+  combineReducers({
+    events: eventsReducer,
+  })
+);
+
+// Combine both persisted reducers
 const rootReducer = combineReducers({
-  auth: authReducer,
-  events: eventsReducer,
+  local: persistedLocalReducer,
+  session: persistedSessionReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(localPersistConfig, rootReducer);
 
 export const makeStore = () => {
   return configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
@@ -39,8 +62,6 @@ export const makeStore = () => {
       }),
   });
 };
-
-// 🔴 Remove `persistor` from this file, move it to `StoreProvider.ts`
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

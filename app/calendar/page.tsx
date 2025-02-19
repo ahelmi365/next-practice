@@ -29,7 +29,7 @@ import {
 } from "../store/features/events/eventsSlice";
 
 const CalendarPage = () => {
-  const events = useAppSelector((state) => state.events.events);
+  const events = useAppSelector((state) => state.session.events.events);
   const [currentEvent, setCurrentEvent] = useState<EventApi[] | null>(null);
   const [newEventTtitle, setNewEventTitle] = useState<string>("");
   const [eventColor, setEventColor] = useState<string>("#3182ce");
