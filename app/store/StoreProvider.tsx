@@ -15,7 +15,7 @@ export default function StoreProvider({
 
   if (!storeRef.current) {
     storeRef.current = makeStore();
-    persistorRef.current = persistStore(storeRef.current); // ✅ Persistor is now tied to the same store instance
+    persistorRef.current = persistStore(storeRef.current);
   }
 
   return (

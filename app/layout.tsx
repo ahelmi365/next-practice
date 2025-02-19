@@ -30,13 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen container mx-auto`}
       >
-        <div className="flex flex-col min-h-screen">
-          <NavBar />
-          <main className="flex-grow py-4">
-            <StoreProvider>{children}</StoreProvider>
-          </main>
-          <Footer />
-        </div>
+        <StoreProvider>
+          <div className="flex flex-col min-h-screen">
+            <NavBar />
+            <main className="flex-grow py-4">{children}</main>
+            <Footer />
+          </div>
+        </StoreProvider>
       </body>
     </html>
   );

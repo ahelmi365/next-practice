@@ -13,43 +13,23 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./features/authSlice/authSlice";
 import eventsReducer from "./features/events/eventsSlice";
-import sessionStorage from "redux-persist/lib/storage/session"; // ✅ Session storage
+import sessionStorage from "redux-persist/lib/storage/session"; // Session storage
 
-// Persist config
-const localPersistConfig = {
-  key: "persist-root",
-  storage,
-  whitelist: ["auth"], // ✅ Make sure events are included in persistence
-};
-
-// ✅ Persist config for sessionStorage
-const sessionPersistConfig = {
-  key: "session-root",
-  storage: sessionStorage,
-  whitelist: ["events"], // ✅ Store 'settings' in session storage
-};
-
-const persistedLocalReducer = persistReducer(
-  localPersistConfig,
-  combineReducers({
-    auth: authReducer,
-  })
+// Persist each slice individually
+const authPersistedReducer = persistReducer(
+  { key: "auth", storage },
+  authReducer
+);
+const eventsPersistedReducer = persistReducer(
+  { key: "events", storage: sessionStorage },
+  eventsReducer
 );
 
-const persistedSessionReducer = persistReducer(
-  sessionPersistConfig,
-  combineReducers({
-    events: eventsReducer,
-  })
-);
-
-// Combine both persisted reducers
+// Combine all persisted reducers
 const rootReducer = combineReducers({
-  local: persistedLocalReducer,
-  session: persistedSessionReducer,
+  auth: authPersistedReducer,
+  events: eventsPersistedReducer,
 });
-
-// const persistedReducer = persistReducer(localPersistConfig, rootReducer);
 
 export const makeStore = () => {
   return configureStore({
