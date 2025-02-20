@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { setIsLoggedIn } from "../../store/features/authSlice/authSlice";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 const Login = () => {
   const dispatch = useAppDispatch();
   const iseLogged = useAppSelector((state) => state.auth.isLoggedIn);
