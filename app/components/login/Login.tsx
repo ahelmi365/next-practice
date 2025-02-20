@@ -4,14 +4,14 @@ import { setIsLoggedIn } from "../../store/features/authSlice/authSlice";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 const Login = () => {
   const dispatch = useAppDispatch();
-  const iseLogged = useAppSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
   return (
     <div>
       <button
-        onClick={() => dispatch(setIsLoggedIn(!iseLogged))}
+        onClick={() => dispatch(setIsLoggedIn(!isLoggedIn))}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
-        Login in {iseLogged ? "true" : "false"}
+        Login in {isLoggedIn ? "true" : "false"}
       </button>
     </div>
   );
