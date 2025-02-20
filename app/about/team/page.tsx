@@ -5,12 +5,13 @@ export const metadata = {
   description: "Team page",
 };
 
-const TeamPage = ({
+const TeamPage = async ({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
-  const category = searchParams?.category || "None";
+  const params = await searchParams;
+  const category = params?.category || "None";
   return (
     <div>
       <p>TeamPage cartegory = {category}</p>
