@@ -3,10 +3,18 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface IAuthState {
   isLoggedIn: boolean;
+  userInfo: {
+    username: string;
+    password: string;
+  };
 }
 
 const initialState: IAuthState = {
   isLoggedIn: false,
+  userInfo: {
+    username: "",
+    password: "",
+  },
 };
 
 export const authSlice = createSlice({
@@ -16,8 +24,12 @@ export const authSlice = createSlice({
     setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
     },
+
+    setUserInfo: (state, action: PayloadAction<IAuthState["userInfo"]>) => {
+      state.userInfo = action.payload;
+    },
   },
 });
 
-export const { setIsLoggedIn } = authSlice.actions;
+export const { setIsLoggedIn, setUserInfo } = authSlice.actions;
 export const authReducer = authSlice.reducer;

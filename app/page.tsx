@@ -1,4 +1,4 @@
-import PostsPage from "./posts/page";
+import LoginPage from "./login/page";
 
 export const metadata = {
   title: "Home",
@@ -7,8 +7,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="aliehlmi">
-      
-      <PostsPage />
+      <LoginPage />
     </div>
   );
 }
