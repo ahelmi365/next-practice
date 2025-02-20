@@ -5,10 +5,15 @@ export const metadata = {
   description: "Team page",
 };
 
-const TeamPage = () => {
+const TeamPage = ({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
+  const category = searchParams?.category || "None";
   return (
     <div>
-      TeamPage
+      <p>TeamPage cartegory = {category}</p>
       <Link href={"/about"}>
         <button>About</button>
       </Link>
