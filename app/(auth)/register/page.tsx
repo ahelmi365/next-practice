@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegisterPage = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -13,6 +15,9 @@ const RegisterPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
+    const { username, email, password, confirmPassword } = formData;
+    console.log(username, email, password, confirmPassword);
+    router.push("/login");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
