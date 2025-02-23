@@ -75,10 +75,7 @@ const LoginPage = () => {
           <button type="submit" className="btn btn-primary">
             Sign in
           </button>
-          <Link
-            href="/register"
-            className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200"
-          >
+          <Link href="/register" className="link">
             Sign up
           </Link>
         </div>

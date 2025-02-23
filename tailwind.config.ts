@@ -91,6 +91,9 @@ export default {
         ".card": {
           "@apply p-6 rounded-lg shadow-md bg-white text-black": {},
         },
+        ".link": {
+          "@apply text-primary hover:underline": {},
+        },
       });
     }),
   ],
