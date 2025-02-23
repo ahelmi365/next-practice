@@ -21,12 +21,12 @@ import {
   DialogTitle,
   DialogHeader,
 } from "@/components/ui/dialog";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   addEvent,
   removeEvent,
   updateEvent,
-} from "../store/features/events/eventsSlice";
+} from "../../store/features/events/eventsSlice";
 
 const CalendarPage = () => {
   const events = useAppSelector((state) => state.events.events);

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "./components/navBar/NavBar";
-import Footer from "./components/footer/Footer";
 import StoreProvider from "./store/StoreProvider";
+import ProtectedRoute from "./components/auth/protectedRoute/ProtectedRoute";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,20 +21,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen container mx-auto`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
-          <div className="flex flex-col min-h-screen">
-            <NavBar />
-            <main className="flex-grow py-4">{children}</main>
-            <Footer />
-          </div>
+          <ProtectedRoute>{children}</ProtectedRoute>
         </StoreProvider>
       </body>
     </html>

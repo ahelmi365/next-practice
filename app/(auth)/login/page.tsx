@@ -1,10 +1,10 @@
 "use client";
 import { useAppDispatch } from "@/app/store/hooks";
+import { useRouter } from "next/navigation";
 import {
   setIsLoggedIn,
   setUserInfo,
-} from "../store/features/authSlice/authSlice";
-import { useRouter } from "next/navigation";
+} from "../../store/features/authSlice/authSlice";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -15,8 +15,8 @@ const LoginPage = () => {
     const formDate = new FormData(e.target as HTMLFormElement);
     const username = formDate.get("username");
     const password = formDate.get("password");
-    console.log(username, password);
     if (username && password) {
+      console.log(username, password);
       dispatch(setIsLoggedIn(true));
       dispatch(
         setUserInfo({
@@ -25,7 +25,7 @@ const LoginPage = () => {
         })
       );
       //   navigate to home page
-      router.push("/posts");
+      router.push("/");
     }
   };
 
@@ -36,7 +36,16 @@ const LoginPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        padding: "20px",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+
+        backgroundColor: "var(--background)",
+        color: "var(--foreground)",
+
+        width: "100%",
       }}
     >
       <form
@@ -69,6 +78,14 @@ const LoginPage = () => {
             borderRadius: "4px",
           }}
         />
+        <div style={{ marginBottom: "10px", textAlign: "center" }}>
+          <a
+            href="/register"
+            style={{ color: "blue", textDecoration: "underline" }}
+          >
+            Don&apos;t have an account? Register here
+          </a>
+        </div>
         <button
           type="submit"
           style={{ padding: "10px", fontSize: "16px", cursor: "pointer" }}

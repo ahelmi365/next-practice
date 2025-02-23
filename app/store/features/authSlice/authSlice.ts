@@ -28,8 +28,11 @@ export const authSlice = createSlice({
     setUserInfo: (state, action: PayloadAction<IAuthState["userInfo"]>) => {
       state.userInfo = action.payload;
     },
+    resetAuth: () => {
+      return initialState;
+    },
   },
 });
 
-export const { setIsLoggedIn, setUserInfo } = authSlice.actions;
+export const { setIsLoggedIn, setUserInfo, resetAuth } = authSlice.actions;
 export const authReducer = authSlice.reducer;

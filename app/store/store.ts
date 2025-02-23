@@ -9,11 +9,10 @@ import {
 } from "redux-persist";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import storage from "redux-persist/lib/storage";
+import sessionStorage from "redux-persist/lib/storage/session"; // Session storage
 import { authReducer } from "./features/authSlice/authSlice";
 import eventsReducer from "./features/events/eventsSlice";
-import sessionStorage from "redux-persist/lib/storage/session"; // Session storage
 
 // Persist each slice individually
 const authPersistedReducer = persistReducer(
