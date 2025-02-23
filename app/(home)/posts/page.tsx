@@ -21,7 +21,7 @@ const PostsPage = async () => {
         {posts.map((post) => (
           <div
             key={post.id}
-            className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between h-full"
+            className="card max-w-sm flex flex-col justify-between h-full"
           >
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {post.title.charAt(0).toUpperCase() + post.title.slice(1, 40)}
@@ -32,7 +32,7 @@ const PostsPage = async () => {
             </p> */}
             <Link
               href={`/posts/${post.id}`}
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center btn btn-primary  focus:ring-4 focus:outline-none"
             >
               Read more
               <svg

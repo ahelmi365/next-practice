@@ -21,7 +21,7 @@ export default function ProtectedRoute({
     if (!isLoggedIn && !isPublicPath) {
       router.push("/login");
     } else if (isLoggedIn && isPublicPath) {
-      router.back();
+      router.push("/");
     }
     setIsRouteChecked(true);
   }, [isLoggedIn, router, pathName, isPublicPath]);

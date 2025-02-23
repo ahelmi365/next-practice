@@ -1,6 +1,7 @@
 "use client";
 import { useAppDispatch } from "@/app/store/hooks";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   setIsLoggedIn,
   setUserInfo,
@@ -24,74 +25,63 @@ const LoginPage = () => {
           password: password as string,
         })
       );
-      //   navigate to home page
       router.push("/");
     }
   };
 
   return (
-    <div
-      className="card"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+    <div className="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      <div className="space-y-2 text-center">
+        <h1 className="text-3xl font-bold tracking-tight">Welcome back</h1>
+        <p className="text-gray-500 dark:text-gray-400">
+          Please enter your details to sign in
+        </p>
+      </div>
 
-        border: "1px solid #ccc",
-        borderRadius: "4px",
-        padding: "20px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-
-        backgroundColor: "var(--background)",
-        color: "var(--foreground)",
-
-        width: "100%",
-      }}
-    >
-      <form
-        style={{ display: "flex", flexDirection: "column", width: "300px" }}
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          style={{
-            marginBottom: "10px",
-            padding: "8px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          style={{
-            marginBottom: "10px",
-            padding: "8px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        />
-        <div style={{ marginBottom: "10px", textAlign: "center" }}>
-          <a
-            href="/register"
-            style={{ color: "blue", textDecoration: "underline" }}
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <label
+            htmlFor="username"
+            className="text-sm font-medium text-gray-700 dark:text-gray-200"
           >
-            Don&apos;t have an account? Register here
-          </a>
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            required
+          />
         </div>
-        <button
-          type="submit"
-          style={{ padding: "10px", fontSize: "16px", cursor: "pointer" }}
-        >
-          Login
-        </button>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="password"
+            className="text-sm font-medium text-gray-700 dark:text-gray-200"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            required
+          />
+        </div>
+
+        <div className="flex items-center justify-between">
+          <button type="submit" className="btn btn-primary">
+            Sign in
+          </button>
+          <Link
+            href="/register"
+            className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200"
+          >
+            Sign up
+          </Link>
+        </div>
       </form>
     </div>
   );

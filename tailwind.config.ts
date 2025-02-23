@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import forms from "@tailwindcss/forms";
+import plugin from "tailwindcss/plugin";
 
 export default {
   darkMode: ["class"],
@@ -67,6 +69,31 @@ export default {
       },
     },
   },
+  plugins: [
+    forms,
+    plugin(({ addComponents }) => {
+      addComponents({
+        ".btn": {
+          "@apply px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2":
+            {},
+        },
+        ".btn-primary": {
+          "@apply bg-primary text-primary-foreground hover:bg-primary/90": {},
+        },
+        ".btn-secondary": {
+          "@apply bg-secondary text-secondary-foreground hover:bg-secondary/80":
+            {},
+        },
+        ".btn-destructive": {
+          "@apply bg-destructive text-destructive-foreground hover:bg-destructive/90":
+            {},
+        },
+        ".card": {
+          "@apply p-6 rounded-lg shadow-md bg-white text-black": {},
+        },
+      });
+    }),
+  ],
 } satisfies Config;
 
 // add card component

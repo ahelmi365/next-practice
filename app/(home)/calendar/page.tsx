@@ -1,32 +1,26 @@
 "use client";
-import {
-  formatDate,
-  DatesSetArg,
-  EventClickArg,
-  EventApi,
-  DateSelectArg,
-} from "@fullcalendar/core";
-import FullCalendar from "@fullcalendar/react";
+import { DateSelectArg, EventApi, EventClickArg } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import FullCalendar from "@fullcalendar/react";
+import timeGridPlugin from "@fullcalendar/timegrid";
 import { useState } from "react";
 // import dialog
 import {
   Dialog,
-  DialogTrigger,
-  DialogContent,
   DialogClose,
+  DialogContent,
+  DialogHeader,
   DialogOverlay,
   DialogTitle,
-  DialogHeader,
+  DialogTrigger,
 } from "@/components/ui/dialog";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   addEvent,
   removeEvent,
   updateEvent,
 } from "../../store/features/events/eventsSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const CalendarPage = () => {
   const events = useAppSelector((state) => state.events.events);
@@ -85,7 +79,7 @@ const CalendarPage = () => {
     }
   };
   return (
-    <>
+    <div className="card">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         slotDuration="00:30:00" // Set time intervals (30 minutes)
@@ -106,7 +100,7 @@ const CalendarPage = () => {
         eventsSet={(events) => setCurrentEvent(events)}
         eventDrop={handleEventDrop}
         eventChange={handleEventDrop}
-        height={"85vh"}
+        height={"80vh"}
       />
 
       <Dialog
@@ -148,7 +142,7 @@ const CalendarPage = () => {
         </DialogContent>
         <DialogOverlay />
       </Dialog>
-    </>
+    </div>
   );
 };
 
