@@ -18,7 +18,7 @@ const PostDetails = async ({ id }: PostDetailsProps) => {
   return (
     <div
       key={post.id}
-      className="card flex flex-col justify-between w-full h-full"
+      className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between w-full h-full"
     >
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {post.title.charAt(0).toUpperCase() + post.title.slice(1)}

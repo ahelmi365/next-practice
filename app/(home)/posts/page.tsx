@@ -16,7 +16,9 @@ const PostsPage = async () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full gap-6">
-      <h1>Posts</h1>
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-400 bg-clip-text text-transparent mb-4">
+        Posts
+      </h1>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
           <div
