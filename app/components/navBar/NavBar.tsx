@@ -48,6 +48,14 @@ const NavBar = () => {
               Team
             </Link>
           </li>
+          <li>
+            <Link
+              href={"/license-renewal"}
+              className="text-white hover:text-blue-400 transition-colors"
+            >
+              Renew License
+            </Link>
+          </li>
         </div>
         <div className="flex items-center gap-6">
           <li>
