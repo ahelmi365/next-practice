@@ -1,6 +1,5 @@
 "use client";
 import React, { SetStateAction } from "react";
-import Stepper from "@/app/components/stepper/Stepper";
 
 interface PaymentPageeProps {
   setActiveStep: React.Dispatch<SetStateAction<number>>;
