@@ -49,7 +49,10 @@ const PaymentPage = ({ setActiveStep }: PaymentPageeProps) => {
 
           <div className="grid grid-cols-3 gap-6">
             {/* Cash Option */}
-            <button className="p-6 border rounded-lg hover:border-blue-600 hover:shadow-md transition-all group">
+            <button
+              onClick={() => setActiveStep(4)}
+              className="p-6 border rounded-lg hover:border-blue-600 hover:shadow-md transition-all group"
+            >
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 mb-4 flex items-center justify-center">
                   <svg
